@@ -35,18 +35,16 @@ return array(
                 return new Zend\View\Model\ViewModel();
             },
             'ClosureAsAction\Controller\Foo' => function ($params) {
-                return [];
+                return [
+                    'bar' => 'b<a>z',
+                    'event' => var_export($this->event->getName(), true)
+                ];
             }
         ),
     ),
     'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
-        
         'template_map' => array(
+            'index' => __DIR__ . '/../view/closure-as-action/foo.phtml',
             'foo' => __DIR__ . '/../view/closure-as-action/foo.phtml',
         ),
     ),
